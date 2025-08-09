@@ -108,7 +108,7 @@ function cursor(){
 
 }
 
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+# eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '$HOME/Bricker/hermes/y/google-cloud-sdk/path.zsh.inc' ]; then . '$HOME/Bricker/hermes/y/google-cloud-sdk/path.zsh.inc'; fi

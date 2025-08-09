@@ -51,5 +51,11 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- Copy/paste from system clipboard
+vim.keymap.set({ 'n', 'x' }, '<leader>cp', '"+y')
+vim.keymap.set({ 'n', 'x' }, '<leader>cv', '"+p')
+-- Delete without changing the registers
+-- vim.keymap.set({ 'n', 'x' }, 'x', '"_x')
+
 -- vim: ts=2 sts=2 sw=2 et
 -- vim.keymap.set('n', '<leader>a', require('nvim-lspimport').import, { noremap = true })

@@ -222,8 +222,9 @@ return {
         -- ts_ls = {},
         --
         basedpyright = {
-          --          settings = {
-          basedpyright = {
+                   settings = {
+          Python = {
+            diagnostic={disabled='attribute-is-unkow'}, 
             analysis = {
               typeCheckingMode = 'basic',
               stubPath = '~/.config/nvim/stubs',
@@ -235,7 +236,7 @@ return {
               -- enableReachabilityAnalysis = false,
             },
           },
-          --         },
+                  },
         },
         ['django-template-lsp'] = {
           cmd = { 'djlsp' }, -- or full path like "/path/to/djlsp"
