@@ -102,6 +102,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias bricker="~/start_dev.sh bricker $1"
+alias td="tmux detach"
+alias tk="tmux kill-server"
 
 function cursor(){
 	$HOME/app-image/Cursor-1.0.0-x86_64.AppImage $@
@@ -122,3 +125,7 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
    ssh-add ~/.ssh/id_ed25519 2>/dev/null  # Adiciona sua chave automaticamente
 fi
 alias config='git -C $HOME --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
