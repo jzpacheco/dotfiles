@@ -11,7 +11,6 @@ if [[ ! -d "$PROJECT_PATH" ]]; then
     exit 1
 fi
 
-
 SESSION_NAME="$2"
 
 if [[ -n "$TMUX" ]]; then
@@ -30,18 +29,18 @@ if tmux has-session -t "$SESSION_NAME" 2>/dev/null; then
     exit 0
 fi
 
-tmux new-session -A -d -c "$PROJECT_PATH" -s "$SESSION_NAME" -n "$SESSION_NAME" 2>/dev/null
+tmux new-session -A -d -c "$PROJECT_PATH" -s "$SESSION_NAME" -n "nvim" 2>/dev/null
 
 # Run nvim in the main pane
 tmux send-keys -t "$SESSION_NAME":1 "nvim" C-m
 
 # Open split pane
-tmux split-window -t "$SESSION_NAME":1 -h -l 40% -c "$PROJECT_PATH"
+tmux new-window -ad -t "$SESSION_NAME" -c "$PROJECT_PATH" -n "shell"
 
 PYENV_DIR=$(find "$PROJECT_PATH" -maxdepth 1 -type d -regex ".*/\.?v?env?" | head -n1)
 if [[ -d "$PYENV_DIR" ]]; then
-    tmux send-keys -t "$SESSION_NAME":1.2 "source $PYENV_DIR/bin/activate" C-m
-    tmux send-keys -t "$SESSION_NAME":1.2 "clear" C-m
+    tmux send-keys -t "$SESSION_NAME":"shell" "source $PYENV_DIR/bin/activate" C-m
+    tmux send-keys -t "$SESSION_NAME":"shell" "clear" C-m
 fi
 
 # Attach to the session
