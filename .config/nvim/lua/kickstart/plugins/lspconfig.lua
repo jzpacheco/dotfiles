@@ -24,7 +24,7 @@ return {
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
       -- Useful status updates for LSP.
-      { 'j-hui/fidget.nvim', opts = {} },
+      { 'j-hui/fidget.nvim',    opts = {} },
 
       -- Allows extra capabilities provided by blink.cmp
       'saghen/blink.cmp',
@@ -222,46 +222,22 @@ return {
         -- ts_ls = {},
         --
         basedpyright = {
-                   settings = {
-          Python = {
-            diagnostic={disabled='attribute-is-unkow'}, 
-            analysis = {
+          settings = {
+            basedpyright = {
+              diagnostic = { disabled = 'attribute-is-unkow' },
               typeCheckingMode = 'basic',
-              stubPath = '~/.config/nvim/stubs',
-              diagnosticMode = 'workspace', -- Better for Django projects
-              useLibraryCodeForTypes = true,
-              -- autoSearchPaths = true,
-              -- diagnosticMode = 'openFilesOnly',
-              -- useLibraryCodeForTypes = true,
-              -- enableReachabilityAnalysis = false,
+              analysis = {
+                typeCheckingMode = 'basic',
+                stubPath = '~/.config/nvim/stubs',
+                diagnosticMode = 'workspace', -- Better for Django projects
+                useLibraryCodeForTypes = true,
+                -- autoSearchPaths = true,
+                -- diagnosticMode = 'openFilesOnly',
+                -- useLibraryCodeForTypes = true,
+                -- enableReachabilityAnalysis = false,
+              },
             },
           },
-                  },
-        },
-        ['django-template-lsp'] = {
-          cmd = { 'djlsp' }, -- or full path like "/path/to/djlsp"
-          filetypes = { 'python', 'django', 'htmldjango' },
-          init_options = {
-            -- Dynamically detect Django settings module (see options below)
-            django_settings_module = function()
-              local root = vim.fn.getcwd()
-              -- Check common project structures
-              if vim.fn.glob(root .. '/portal/settings.py') ~= '' then
-                return 'portal.settings'
-              elseif vim.fn.glob(root .. '/cronos/settings.py') ~= '' then
-                return 'cronos.settings'
-              else
-                return root:match '([^/]+)$' .. 'settings' -- Fallback
-              end
-            end,
-            docker_compose_file = 'docker-compose.yml',
-            docker_compose_service = 'django',
-          },
-          -- Optional: Custom on_attach for Django-specific keymaps
-          on_attach = function(client, bufnr)
-            -- Example: Django-specific keybindings
-            vim.keymap.set('n', '<leader>dm', ':!python manage.py ', { buffer = bufnr, desc = 'Django: Run manage.py command' })
-          end,
         },
         lua_ls = {
           -- cmd = { ... },

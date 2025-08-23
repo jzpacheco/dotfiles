@@ -23,6 +23,7 @@ return {
         },
       },
       window = {
+        position = 'current',
         mappings = {
           ['\\'] = 'close_window',
         },
