@@ -7,3 +7,5 @@ sudo pacman -S lazygit --noconfirm --needed
 sudo pacman -S wl-clipboard --noconfirm --needed
 sudo pacman -S jdk-openjdk --noconfirm --needed
 sudo pacman -S docker-compose docker --noconfirm --needed
+sudo pacman -S zellij
+sudo pacman -S unzip
